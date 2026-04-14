@@ -1,0 +1,64 @@
+{
+  "name": "performance-select-vue3",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "description": "A Vue 3 high-performance select component supporting single select, multiple select, filtering, and remote loading.",
+  "author": "xiesantao",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiesantao/performance-select-vue3.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xiesantao/performance-select-vue3/issues"
+  },
+  "homepage": "https://github.com/xiesantao/performance-select-vue3#readme",
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    },
+    "./style.css": "./dist/style.css",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build": "npm run clean && vite build && vue-tsc --declaration --emitDeclarationOnly -p tsconfig.json",
+    "pack:preview": "npm run build && npm pack --dry-run",
+    "publish:public": "npm publish --access public",
+    "release:patch": "npm version patch",
+    "release:minor": "npm version minor",
+    "release:major": "npm version major",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "vue3",
+    "select",
+    "multiselect",
+    "component",
+    "typescript"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  }
+}
